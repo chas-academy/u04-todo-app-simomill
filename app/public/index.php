@@ -24,6 +24,7 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     <a href="add.php" class="add">Add Task</a>
 
+    
     <div class="item heading">
             <span>Task</span>
             <span>Description</span>

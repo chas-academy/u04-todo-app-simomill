@@ -9,7 +9,7 @@
 </head>
     <body>
         <form action="create.php" method="POST" class="create">
-            <input type="text" name="title" placeholder="New task" value="<?php if (isset($_POST['title'])){
+            <input type="text" name="title" required placeholder="New task" value="<?php if (isset($_POST['title'])){
                 echo $_POST['task_name'];
                 }
                 ?>">
@@ -17,8 +17,8 @@
                 echo $_POST['description']; 
                 }
                 ?>"> </textarea>
-            <select name="urgency" id="">
-                <option class="urgencyLevel" selected disabled>--Choose Urgency--</option>
+            <select name="urgency" id="" required>
+                <option selected disabled>--Choose Urgency--</option>
                 <option value="">None</option>
                 <option value="Today">Today</option>
                 <option value="This Week">This Week</option>
