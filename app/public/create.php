@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($title) {
         $urgency = null;
-        
         if (isset($_POST['urgency'])) {
             $urgency = $_POST['urgency'];
             }

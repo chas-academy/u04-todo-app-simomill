@@ -8,16 +8,10 @@
     <title>Add Task</title>
 </head>
     <body>
-        <form action="create.php" method="POST" class="create">
-            <input type="text" name="title" required placeholder="New task" value="<?php if (isset($_POST['title'])){
-                echo $_POST['task_name'];
-                }
-                ?>">
-            <textarea name="description" placeholder="Description"  value="<?php if (isset($_POST['description'])){
-                echo $_POST['description']; 
-                }
-                ?>"> </textarea>
-            <select name="urgency" id="" required>
+        <form action="" method="POST" class="create">
+            <input type="text" name="title" required placeholder="New task" value="<?php echo $title; ?>">
+            <textarea name="description" placeholder="Description" value="<?php echo $description; ?>"></textarea>
+            <select name="urgency" id="" required value="<?php echo $urgency; ?>">
                 <option selected disabled>--Choose Urgency--</option>
                 <option value="">None</option>
                 <option value="Today">Today</option>
@@ -25,7 +19,7 @@
                 <option value="This Month">This Month</option>
                 <option value="This Year">This Year</option>
             </select>
-            <button class="btn" type="submit">Create</button>
+            <button type="submit" class="btn">Save</button>
         </form>
 
         <a href="index.php">← Go back</a>

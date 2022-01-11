@@ -22,7 +22,7 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     <h1>Todo app</h1>
 
-    <a href="add.php" class="add">Add Task</a>
+    <a href="add.php" class="add btn">Add Task</a>
 
     
     <div class="item heading">
