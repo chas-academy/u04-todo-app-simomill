@@ -8,6 +8,9 @@
     <title>Add Task</title>
 </head>
     <body>
+
+    <h1>Create new task</h1>
+
         <form action="create.php" method="POST" class="create">
             <input type="text" name="title" required placeholder="New task" value="<?php if (isset($_POST['title'])){
                 echo $_POST['task_name'];

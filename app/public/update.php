@@ -21,15 +21,15 @@ $urgency = $task['urgency'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $urgency = $_POST['urgency'];
+    $newTitle = $_POST['title'];
+    $newDesc = $_POST['description'];
+    $newUrgency = $_POST['urgency'];
 
     $statement = $pdo->prepare("UPDATE simondb.Tasks SET title = :title, description = :description, urgency = :urgency WHERE id = :id");
 
-    $statement->bindValue(':title', $title);
-    $statement->bindValue(':description', $description);
-    $statement->bindValue(':urgency', $urgency);
+    $statement->bindValue(':title', $newTitle);
+    $statement->bindValue(':description', $newDesc);
+    $statement->bindValue(':urgency', $newUrgency);
     $statement->bindValue(':id', $id);
     $statement->execute();
     header('Location: index.php');
@@ -52,14 +52,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form action="" method="POST" class="create">
             <input type="text" name="title" required placeholder="New task" value="<?php echo $title; ?>">
-            <textarea name="description" placeholder="Description" value="<?php echo $description; ?>"></textarea>
-            <select name="urgency" id="" required value="<?php echo $urgency; ?>">
-                <option selected disabled>--Choose Urgency--</option>
-                <option value="">None</option>
-                <option value="Today">Today</option>
-                <option value="This Week">This Week</option>
-                <option value="This Month">This Month</option>
-                <option value="This Year">This Year</option>
+            <textarea name="description" placeholder="Description"><?php echo $description; ?></textarea>
+            <select name="urgency" id="" value="<?php echo $urgency; ?>">
+                <option disabled>--Choose Urgency--</option>
+                
+                <option <?php if ("" === $task['urgency']) echo "selected" ?> value="">None</option>
+                
+                <option <?php if ("Today" === $task['urgency']) echo "selected" ?> value="Today">Today</option>
+                
+                <option <?php if ("This Week" === $task['urgency']) echo "selected" ?> value="This Week">This Week</option>
+                
+                <option <?php if ("This Month" === $task['urgency']) echo "selected" ?> value="This Month">This Month</option>
+                
+                <option <?php if ("This Year" === $task['urgency']) echo "selected" ?> value="This Year">This Year</option>
             </select>
             <button type="submit" class="btn">Update</button>
         </form>
