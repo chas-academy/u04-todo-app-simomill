@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+}
+
+a.add  {
+    display: block;
+    text-align: center;
+    padding: 5px;   
+    width: 100%;
+    margin: 40px 0;
+    background-color: rgb(239, 239, 239);
+    border: 1px solid rgb(118, 118, 118);
+}
+
+a.add:hover {
+    color: inherit;
+    background-color: rgb(174, 236, 255);
+    border-color: rgb(62, 132, 165);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: rgb(66, 158, 201);
+}
+
+.create {
+    margin-bottom: 60px;
+}
+
+.create input, .create textarea, .create button, .create select {
+    display: block;
+    margin-bottom: 10px;
+    width: 400px;
+    max-width: 400px;
+    border-radius: 5px;
+    border: 1px solid rgb(118, 118, 118);
+    padding: 4px;
+}
+
+.create button:hover {
+    background-color: rgb(151, 220, 252);
+    border-color: rgb(66, 158, 201);
+}
+
+button {
+    cursor: pointer;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 100px 250px 100px 150px repeat(2, 40px);
+    grid-gap: 5px;
+    margin-bottom: 10px;
+}
+
+.heading {
+    font-weight: 700;
+    border-bottom: 1px solid rgb(161, 159, 159);
+    /* margin-bottom: 20px; */
+}
