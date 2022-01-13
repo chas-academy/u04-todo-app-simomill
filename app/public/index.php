@@ -16,7 +16,8 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Todo App</title>
-    <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/723fbc7b2c.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <main>
@@ -31,6 +32,9 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
             <span>Description</span>
             <span>Urgency</span>
             <span>Created</span>
+            <span>Delete</span>
+            <span>Edit</span>
+            <span>Done</span>
             
         </div>
 
@@ -74,7 +78,7 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
         echo $_POST['completed'];
      } 
      ?>
-        
+
     </main>
 </body>
 </html>
