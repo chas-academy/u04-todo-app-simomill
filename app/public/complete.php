@@ -21,7 +21,9 @@ $statement->bindValue(':id', $id);
 $statement->execute();
 $task = $statement->fetch(PDO::FETCH_ASSOC);
 
-$completed = $_POST['completed'];
+
+
+$completed = $_POST['completed'] ?? null;
 
 if ($completed === "on") {
 

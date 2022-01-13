@@ -91,6 +91,10 @@ a:hover {
     margin-bottom: 10px;
 }
 
+.finnished {
+    text-decoration: line-through;
+}
+
 input.larger {
     width: 20px;
     height: 20px;
