@@ -16,6 +16,7 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Todo App</title>
+    <script src="app.js"></script>
 </head>
 <body>
     <main>
@@ -69,6 +70,10 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
             <?php endif; ?>
         <?php endforeach; ?>
         
+        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        echo $_POST['completed'];
+     } 
+     ?>
         
     </main>
 </body>

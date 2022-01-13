@@ -64,6 +64,10 @@ a:hover {
     text-align: center;
 }
 
+.small {
+    height: 20px;
+}
+
 .btn:hover {
     color: inherit;
     background-color: rgb(151, 220, 252);
@@ -82,9 +86,14 @@ a:hover {
 
 .item {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1.5fr repeat(2, 60px);
+    grid-template-columns: 1fr 2fr 1fr 1.5fr repeat(3, 60px);
     grid-gap: 5px;
     margin-bottom: 10px;
+}
+
+input.larger {
+    width: 20px;
+    height: 20px;
 }
 
 .desc {
