@@ -6,6 +6,13 @@ $statement = $pdo->prepare('SELECT * FROM simondb.Tasks ORDER BY create_date DES
 $statement->execute();
 $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+$today = date('Y-m-d');
+$tomorrow = new DateTime('tomorrow');
+$tomorrow = $tomorrow->format('Y-m-d');
+
+$tomorrow_num = intval(str_replace("-", "", $tomorrow));
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,104 +29,164 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <main>
 
-    <h1>Todo app</h1>
+    <h1>todooer</h1>
 
     <a href="add.php" class="add btn">Add Task</a>
 
-    <?php 
+    
 
-        $today = 0;
+    <?php
+
+// ----------UNSCHEDULED TASKS
         
-        foreach ($tasks as $i => $task) {
-            if ($task['urgency'] === "Today") {
-                $today ++ ;   
-            }};
+    $noday_tasks = 0;
+    
+    foreach ($tasks as $i => $task) {
+        if ($task['due_date'] === null) {
+            $noday_tasks ++ ;   
+        }};
 
-    if ($today !== 0): ?>
+    if ($noday_tasks !== 0): ?>
+    
+        <h2>Unscheduled tasks</h2>
+
+        <div class="item heading">
+                <span>Task</span>
+                <span>Description</span>
+                <span>Due</span>
+                <span>Delete</span>
+                <span>Edit</span>
+                <span>Done</span>  
+            </div>
+
+    <?php endif; 
+
+    foreach ($tasks as $i => $task) {
+        
+        if ($task['due_date'] === null) {
+            require '../partials/_tableLoop.php';
+        }
+    }
+    
+    if ($noday_tasks !== 0) {
+        echo '<span class="divider"></span>';
+    }
+
+    
+//-----------TODAYS TASKS
+     
+    $today_tasks = 0;
+    
+    foreach ($tasks as $i => $task) {
+        if ($task['due_date'] === $today) {
+            $today_tasks ++ ;   
+        }};
+
+    if ($today_tasks !== 0): ?>
         
         <h2>Today</h2>
 
         <div class="item heading">
             <span>Task</span>
             <span>Description</span>
-            <span>Urgency</span>
-            <span>Created</span>
+            <span>Due</span>
             <span>Delete</span>
             <span>Edit</span>
             <span>Done</span>  
         </div>
         
     <?php else: ?>
+        <?php if (empty($tasks)): ?>
         <h2>Nothing needs to be done today.</h2>
-    <?php endif; ?>
+    <?php endif; endif; ?>
 
-    <?php foreach ($tasks as $i => $task): ?>
-        <?php if ($task['urgency'] === null): ?>
-        <?php require '../partials/_tableLoop.php'; ?>
-        <?php endif; ?>
-    <?php endforeach; ?>
+    <?php foreach ($tasks as $i => $task) {
 
-    <?php foreach ($tasks as $i => $task): ?>
-        <?php if ($task['urgency'] === 'Today'): ?>
-        <?php require '../partials/_tableLoop.php'; ?>
-        <?php endif; ?>
-    <?php endforeach; ?>
+        if ($task['due_date'] === $today) {
+            require '../partials/_tableLoop.php';
+        }
+    }
+    
+    if ($today_tasks !== 0) {
+        echo '<span class="divider"></span>';
+    }
 
-    <?php 
+//----------TOMORROWS TASKS
 
-    $thisW = 0;
+    $tmrws_tasks = 0;
     
     foreach ($tasks as $i => $task) {
-        
-        if ($task['urgency'] === "This Week") {
-            $thisW ++ ;   
-        }
-    };
+        if ($task['due_date'] === $tomorrow) {
+            $tmrws_tasks ++ ;   
+        }};
 
-    if ($thisW !== 0): ?>
+    if ($tmrws_tasks !== 0): ?>
         
-        <h2>This Week</h2>
+        <h2>Tomorrow</h2>
 
         <div class="item heading">
             <span>Task</span>
             <span>Description</span>
-            <span>Urgency</span>
-            <span>Created</span>
+            <span>Due</span>
             <span>Delete</span>
             <span>Edit</span>
             <span>Done</span>  
         </div>
         
     <?php endif; ?>
-        
-        <?php foreach ($tasks as $i => $task): ?>
-            <?php if ($task['urgency'] === 'This Week'): ?>
-            <?php require '../partials/_tableLoop.php'; ?>
-            <?php endif; ?>
-        <?php endforeach; ?>
-        
-        <?php foreach ($tasks as $i => $task): ?>
-            <?php if ($task['urgency'] === 'This Month'): ?>
-            <?php require '../partials/_tableLoop.php'; ?>
-            <?php endif; ?>
-        <?php endforeach; ?>
 
-        <?php foreach ($tasks as $i => $task): ?>
-            <?php if ($task['urgency'] === 'This Year'): ?>
-            <?php require '../partials/_tableLoop.php'; ?>
-            <?php endif; ?>
-        <?php endforeach; ?>
-     
-        <?php foreach ($tasks as $i => $task): ?>
-            <?php if ($task['finnished'] === '1'): ?>
-            <?php require '../partials/_tableLoop.php'; ?>
-            <?php endif; ?>
-        <?php endforeach; ?>
-        
-        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        echo $_POST['completed'];
-     } 
-     ?>
+    <?php foreach ($tasks as $i => $task) {
+
+        if ($task['due_date'] === $tomorrow) {
+            require '../partials/_tableLoop.php';
+        }
+    }
+    
+    if ($tmrws_tasks !== 0) {
+        echo '<span class="divider"></span>';
+    }
+
+//----------LATER TASKS
+
+    $later_tasks = 0;
+
+    foreach ($tasks as $i => $task) {
+        if ($task['due_date'] !== null) {
+            $due_num = intval(str_replace("-", "", $task['due_date']));
+
+            if ($due_num > $tomorrow_num) {
+                $tmrws_tasks ++ ;   
+            }}
+        };
+
+    if ($tmrws_tasks !== 0): ?>
+    
+        <h2>Later</h2>
+
+        <div class="item heading">
+                <span>Task</span>
+                <span>Description</span>
+                <span>Due</span>
+                <span>Delete</span>
+                <span>Edit</span>
+                <span>Done</span>  
+            </div>
+    
+    <?php endif; ?>
+
+    <?php foreach ($tasks as $i => $task) {
+
+        if ($task['due_date'] !== $today && $task['due_date'] !== $tomorrow && $task['due_date'] !== null) {
+            require '../partials/_tableLoop.php';
+        }
+    }
+    
+    if ($later_tasks !== 0) {
+    echo '<span class="divider"></span>';
+    }
+
+
+    ?>
 
     </main>
 </body>

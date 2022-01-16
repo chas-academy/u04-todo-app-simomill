@@ -8,30 +8,24 @@
     <title>Add Task</title>
 </head>
     <body>
+        <main>
+            <h1>Create new task</h1>
 
-    <h1>Create new task</h1>
+            <form action="create.php" method="POST" class="create">
+                <input type="text" name="title" required placeholder="New task" value="<?php if (isset($_POST['title'])){
+                    echo $_POST['task_name'];
+                    }
+                    ?>">
+                <textarea name="description" placeholder="Description"  value="<?php if (isset($_POST['description'])){
+                    echo $_POST['description']; 
+                    }
+                    ?>"> </textarea>
+                <input type="date" name="due_date" id="" min="<?php echo date('Y-m-d'); ?>">
+                <button class="btn" type="submit">Create</button>
+            </form>
 
-        <form action="create.php" method="POST" class="create">
-            <input type="text" name="title" required placeholder="New task" value="<?php if (isset($_POST['title'])){
-                echo $_POST['task_name'];
-                }
-                ?>">
-            <textarea name="description" placeholder="Description"  value="<?php if (isset($_POST['description'])){
-                echo $_POST['description']; 
-                }
-                ?>"> </textarea>
-            <select name="urgency" id="" required>
-                <option selected disabled>--Choose Urgency--</option>
-                <option value="">None</option>
-                <option value="Today">Today</option>
-                <option value="This Week">This Week</option>
-                <option value="This Month">This Month</option>
-                <option value="This Year">This Year</option>
-            </select>
-            <button class="btn" type="submit">Create</button>
-        </form>
-
-        <a href="index.php">← Go back</a>
+            <a href="index.php">← Go back</a>
+        </main>
     </body>
 </html>
     

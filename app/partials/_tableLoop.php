@@ -15,13 +15,8 @@
         <?php if ($task['finnished'] === 1) {
                 echo 'class="finnished"';
             } ?>>
-        <?php echo $task['urgency'] ?></span>
+        <?php echo $task['due_date'] ?></span>
 
-    <span 
-        <?php if ($task['finnished'] === 1) {
-                echo 'class="finnished"';
-            } ?>>
-        <?php echo $task['create_date'] ?></span>
 
     <form style="display: inline-block" action="delete.php" method="post">
         <input type="hidden" name="id" value="<?php echo $task['id'] ?>">
