@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Add Task</title>
 </head>
     <body>
@@ -24,7 +24,7 @@
                 <button class="btn" type="submit">Create</button>
             </form>
 
-            <a href="index.php">← Go back</a>
+            <a href="../index.php">← Go back</a>
         </main>
     </body>
 </html>

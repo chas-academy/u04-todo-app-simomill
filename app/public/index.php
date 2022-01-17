@@ -2,7 +2,7 @@
 /** @var $pdo \PDO */
 require_once "../db.php";
 
-$statement = $pdo->prepare('SELECT * FROM simondb.Tasks ORDER BY create_date DESC');
+$statement = $pdo->prepare('SELECT * FROM simondb.tasks ORDER BY create_date DESC');
 $statement->execute();
 $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -31,12 +31,9 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
 
     <h1>todooer</h1>
 
-    <a href="add.php" class="add btn">Add Task</a>
+    <a href="tasks/add.php" class="add btn">Add Task</a>
 
-    
-
-    <?php
-
+    <?php   
 // ----------UNSCHEDULED TASKS
         
     $noday_tasks = 0;
@@ -180,7 +177,7 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
             require '../partials/_tableLoop.php';
         }
     }
-    
+
     if ($later_tasks !== 0) {
     echo '<span class="divider"></span>';
     }
