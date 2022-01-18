@@ -2,17 +2,6 @@
 /** @var $pdo \PDO */
 require_once "../db.php";
 
-$statement = $pdo->prepare('SELECT * FROM simondb.tasks ORDER BY create_date DESC');
-$statement->execute();
-$tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-$today = date('Y-m-d');
-$tomorrow = new DateTime('tomorrow');
-$tomorrow = $tomorrow->format('Y-m-d');
-
-$tomorrow_num = intval(str_replace("-", "", $tomorrow));
-
-
 ?>
 
 <!DOCTYPE html>
@@ -21,170 +10,45 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Todo App</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="app.js" defer></script>
     <script src="https://kit.fontawesome.com/723fbc7b2c.js" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body class="login">
     <main>
+        <h1>todo<i class="fas fa-tasks"></i>r</h1>
 
-    <h1>todooer</h1>
-
-    <a href="tasks/add.php" class="add btn">Add Task</a>
-
-    <?php   
-// ----------UNSCHEDULED TASKS
-        
-    $noday_tasks = 0;
-    
-    foreach ($tasks as $i => $task) {
-        if ($task['due_date'] === null) {
-            $noday_tasks ++ ;   
-        }};
-
-    if ($noday_tasks !== 0): ?>
-    
-        <h2>Unscheduled tasks</h2>
-
-        <div class="item heading">
-                <span>Task</span>
-                <span>Description</span>
-                <span>Due</span>
-                <span>Delete</span>
-                <span>Edit</span>
-                <span>Done</span>  
-            </div>
-
-    <?php endif; 
-
-    foreach ($tasks as $i => $task) {
-        
-        if ($task['due_date'] === null) {
-            require '../partials/_tableLoop.php';
-        }
-    }
-    
-    if ($noday_tasks !== 0) {
-        echo '<span class="divider"></span>';
-    }
-
-    
-//-----------TODAYS TASKS
-     
-    $today_tasks = 0;
-    
-    foreach ($tasks as $i => $task) {
-        if ($task['due_date'] === $today) {
-            $today_tasks ++ ;   
-        }};
-
-    if ($today_tasks !== 0): ?>
-        
-        <h2>Today</h2>
-
-        <div class="item heading">
-            <span>Task</span>
-            <span>Description</span>
-            <span>Due</span>
-            <span>Delete</span>
-            <span>Edit</span>
-            <span>Done</span>  
+        <div class="links-container">
+            <span class="log-link" id="signupLink">sign up</span>
+            <span class="log-link" id="loginLink">sign in</span>
         </div>
-        
-    <?php else: ?>
-        <?php if (empty($tasks)): ?>
-        <h2>Nothing needs to be done today.</h2>
-    <?php endif; endif; ?>
 
-    <?php foreach ($tasks as $i => $task) {
+        <p id="user_msg" class="error"><?php if(isset($_GET['msg'])) {
+                        echo $_GET['msg'];
+                    } ?></p>
+            
+        <form action="check_user.php" method="post" class="login" id="signin">  
+                <input type="text" id="user_signin" name="username" placeholder="username">
 
-        if ($task['due_date'] === $today) {
-            require '../partials/_tableLoop.php';
-        }
-    }
-    
-    if ($today_tasks !== 0) {
-        echo '<span class="divider"></span>';
-    }
+                <input type="password" name="loginPass" id="pass_signin" placeholder="password">
+                
+                <input type="submit" value="Login" class="btn">
+        </form>
 
-//----------TOMORROWS TASKS
+        <form action="check_user.php" method="post" class="login" id="signup">  
+                <input type="text" id="user_signup" name="username" placeholder="username" required>
 
-    $tmrws_tasks = 0;
-    
-    foreach ($tasks as $i => $task) {
-        if ($task['due_date'] === $tomorrow) {
-            $tmrws_tasks ++ ;   
-        }};
+                <input type="password" name="signupPass" id="pass_signup" placeholder="password" required>
 
-    if ($tmrws_tasks !== 0): ?>
-        
-        <h2>Tomorrow</h2>
+                <input type="password" name="pass_confirm" id="pass_confirm" placeholder="repeat password" required>
 
-        <div class="item heading">
-            <span>Task</span>
-            <span>Description</span>
-            <span>Due</span>
-            <span>Delete</span>
-            <span>Edit</span>
-            <span>Done</span>  
-        </div>
-        
-    <?php endif; ?>
+                <p class="error" id="pass_msg"></p>
 
-    <?php foreach ($tasks as $i => $task) {
-
-        if ($task['due_date'] === $tomorrow) {
-            require '../partials/_tableLoop.php';
-        }
-    }
-    
-    if ($tmrws_tasks !== 0) {
-        echo '<span class="divider"></span>';
-    }
-
-//----------LATER TASKS
-
-    $later_tasks = 0;
-
-    foreach ($tasks as $i => $task) {
-        if ($task['due_date'] !== null) {
-            $due_num = intval(str_replace("-", "", $task['due_date']));
-
-            if ($due_num > $tomorrow_num) {
-                $tmrws_tasks ++ ;   
-            }}
-        };
-
-    if ($tmrws_tasks !== 0): ?>
-    
-        <h2>Later</h2>
-
-        <div class="item heading">
-                <span>Task</span>
-                <span>Description</span>
-                <span>Due</span>
-                <span>Delete</span>
-                <span>Edit</span>
-                <span>Done</span>  
-            </div>
-    
-    <?php endif; ?>
-
-    <?php foreach ($tasks as $i => $task) {
-
-        if ($task['due_date'] !== $today && $task['due_date'] !== $tomorrow && $task['due_date'] !== null) {
-            require '../partials/_tableLoop.php';
-        }
-    }
-
-    if ($later_tasks !== 0) {
-    echo '<span class="divider"></span>';
-    }
-
-
-    ?>
-
+                <button type="submit" class="btn" id="signup_submit">Sign up</button>
+        </form>
     </main>
+
 </body>
 </html>

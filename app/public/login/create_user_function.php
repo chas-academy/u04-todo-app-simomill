@@ -16,7 +16,7 @@ function create_user() {
         $statement->bindValue(':username', $username);
         $statement->bindValue(':password', $password);
         $statement->execute();
-        header('Location: ../index.php');
+        header('Location: ../tasks/read.php');
 
     }
 

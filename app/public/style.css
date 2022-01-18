@@ -5,6 +5,11 @@
 
 }
 
+header {
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     font-family: sans-serif;
     display: flex;
@@ -22,9 +27,6 @@ main {
     margin: 100px 0;
 }
 
-svg {
-    width: 20px;
-}
 
 h2 {
     margin: 40px;
@@ -57,7 +59,7 @@ a {
     color: inherit;
 }
 
-a:hover {
+a:hover, .log-link:hover {
     color: rgb(66, 158, 201);
 }
 
@@ -206,6 +208,7 @@ input[type="checkbox"]:focus::after {
 .heading {
     font-weight: 700;
     border-bottom: 1px solid rgb(161, 159, 159);
+    color: rgb(175, 174, 174);
 }
 
 form.login {
@@ -217,13 +220,9 @@ form.login {
     margin-top: 20px;
 }
 
-.login-links {
+.log-link {
     cursor: pointer;
-}
-
-.login-links:hover {
-    color: rgb(158, 104, 24);
-    
+    color: rgb(72 72 72);
 }
 
 .error {
@@ -231,6 +230,23 @@ form.login {
     padding: 10px;
     color: rgb(143, 10, 10);
     border-radius: 5px;
-    
+}
 
+.logout-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.links-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.fa-sign-out-alt {
+    font-weight:lighter;
+}
+
+.fa-tasks {
+    font-size: 2rem;
+    padding: 1px;
 }

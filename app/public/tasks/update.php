@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $statement->bindValue(':urgency', $newDue);
     $statement->bindValue(':id', $id);
     $statement->execute();
-    header('Location: ../index.php');
+    header('Location: read.php');
 
 } 
 
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn">Update</button>
         </form>
 
-        <a href="../index.php">← Go back</a>
+        <a href="read.php">← Go back</a>
     </body>
 </html>
         

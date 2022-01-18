@@ -9,7 +9,7 @@ $id = $_POST['id'] ?? null;
 if (!$id) {
     // echo "No ID";
 
-    header('Location: ../index.php');
+    header('Location: read.php');
     exit;
 }
 
@@ -40,5 +40,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $statement->bindValue(':finnished', $finnished);
     $statement->bindValue(':id', $id);
     $statement->execute();
-    header('Location: ../index.php');
+    header('Location: read.php');
 }

@@ -24,7 +24,7 @@
                 <button class="btn" type="submit">Create</button>
             </form>
 
-            <a href="../index.php">← Go back</a>
+            <a href="read.php">← Go back</a>
         </main>
     </body>
 </html>

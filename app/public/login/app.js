@@ -15,6 +15,9 @@
         nameError.innerText = "";
         signupForm.style.display = "flex";
         loginForm.style.display = "";
+        nameError.style.display = "none";
+        passError.style.display = "none";
+
 
     });
 
@@ -22,6 +25,8 @@
         nameError.innerText = "";
         loginForm.style.display = "flex";
         signupForm.style.display = "";
+        nameError.style.display = "none";
+        passError.style.display = "none";
     });
 
 
@@ -40,9 +45,11 @@
         if (password.value && confirm_password.value) {
             if (password.value != confirm_password.value) {
                 submit.disabled = true;
+                passError.style.display = "block";
                 passError.innerText = "Passwords don't match!";
             } else {
                 submit.disabled = false;
+                passError.style.display = "none";
                 passError.innerText = "";
             }
         }
@@ -50,7 +57,3 @@
     }
 
     signupForm.addEventListener("keyup", validatePassword);
-
-
-
-
