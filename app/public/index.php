@@ -12,7 +12,7 @@ require_once "../db.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../style.css">
-    <script src="app.js" defer></script>
+    <script src="login/app.js" defer></script>
     <script src="https://kit.fontawesome.com/723fbc7b2c.js" crossorigin="anonymous"></script>
 
 </head>
