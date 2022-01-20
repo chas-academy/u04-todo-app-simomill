@@ -1,6 +1,6 @@
 <?php
 /** @var $pdo \PDO */
-require_once "../db.php";
+require_once "../../db.php";
 session_start();
 $userID = $_SESSION['userID'];
 
@@ -24,7 +24,7 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Todo App</title>
     <script src="https://kit.fontawesome.com/723fbc7b2c.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -38,7 +38,7 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
     <a class="log-link" href="../index.php">Log out <i class="fas fa-sign-out-alt"></i></a>
     </div>
     
-    <a href="tasks/add.php" class="add btn">Add Task</a>
+    <a href="add.php" class="add btn">Add Task</a>
 
     <?php   
 // ----------UNSCHEDULED TASKS
@@ -68,7 +68,7 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
     foreach ($tasks as $i => $task) {
         
         if ($task['due_date'] === null) {
-            require '../partials/_tableLoop.php';
+            require '../../partials/_tableLoop.php';
         }
     }
     
@@ -107,7 +107,7 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
     <?php foreach ($tasks as $i => $task) {
 
         if ($task['due_date'] === $today) {
-            require '../partials/_tableLoop.php';
+            require '../../partials/_tableLoop.php';
         }
     }
     
@@ -142,7 +142,7 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
     <?php foreach ($tasks as $i => $task) {
 
         if ($task['due_date'] === $tomorrow) {
-            require '../partials/_tableLoop.php';
+            require '../../partials/_tableLoop.php';
         }
     }
     
@@ -159,11 +159,11 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
             $due_num = intval(str_replace("-", "", $task['due_date']));
 
             if ($due_num > $tomorrow_num) {
-                $tmrws_tasks ++ ;   
+                $later_tasks ++ ;   
             }}
         };
 
-    if ($tmrws_tasks !== 0): ?>
+    if ($later_tasks !== 0): ?>
     
         <h2>Later</h2>
 
@@ -181,7 +181,7 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
     <?php foreach ($tasks as $i => $task) {
 
         if ($task['due_date'] !== $today && $task['due_date'] !== $tomorrow && $task['due_date'] !== null) {
-            require '../partials/_tableLoop.php';
+            require '../../partials/_tableLoop.php';
         }
     }
 

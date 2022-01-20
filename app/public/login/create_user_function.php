@@ -6,7 +6,7 @@ function create_user() {
     
     global $pdo;
     $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['signupPass'], PASSWORD_DEFAULT);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

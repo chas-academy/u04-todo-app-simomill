@@ -29,7 +29,7 @@ require_once "../db.php";
                         echo $_GET['msg'];
                     } ?></p>
             
-        <form action="check_user.php" method="post" class="login" id="signin">  
+        <form action="login/check_user.php" method="post" class="login" id="signin">  
                 <input type="text" id="user_signin" name="username" placeholder="username">
 
                 <input type="password" name="loginPass" id="pass_signin" placeholder="password">
@@ -37,7 +37,7 @@ require_once "../db.php";
                 <input type="submit" value="Login" class="btn">
         </form>
 
-        <form action="check_user.php" method="post" class="login" id="signup">  
+        <form action="login/check_user.php" method="post" class="login" id="signup">  
                 <input type="text" id="user_signup" name="username" placeholder="username" required>
 
                 <input type="password" name="signupPass" id="pass_signup" placeholder="password" required>

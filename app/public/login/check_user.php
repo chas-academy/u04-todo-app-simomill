@@ -32,8 +32,9 @@ if ($alreadyExists === 0) {
 }
 
 //-----CHECK PASSWORD
+if (isset($_POST['loginPass'])) {
 $password = password_hash($_POST['loginPass'], PASSWORD_DEFAULT);
-
+}
 
 if ($alreadyExists != 0) {
     
@@ -44,7 +45,11 @@ if ($alreadyExists != 0) {
     }
 
 } else {
-    header('Location: ../index.php?msg=User does not exist.');  
+    if (password_verify($_POST['loginPass'], $userMatch['password'])) {
+        header('Location: ../tasks/read.php');
+    } else {
+        header('Location: ../index.php?msg=User does not exist.');
+    }
 }
 
 session_start();
