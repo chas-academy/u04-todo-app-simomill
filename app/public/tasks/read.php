@@ -32,7 +32,7 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
 </head>
 <body>
     <main>
-    <h1>tod<i class="fas fa-tasks"></i>er</h1>
+    <h1>TODO<i class="fas fa-tasks"></i>R</h1>
 
     <div class="logout-container">
     <a class="log-link" href="../index.php">Log out <i class="fas fa-sign-out-alt"></i></a>

@@ -46,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../style.css">
     <title>Add Task</title>
 </head>
-    <body>
+    <body class="update">
 
-    <h1>Update task: <b><?php echo($task['title'])  ?></b></h1>
+    <h1>Update task: <br> "<?php echo($task['title'])  ?>"</h1>
 
         <form action="" method="POST" class="create">
             <input type="text" name="title" required placeholder="New task" value="<?php echo $title; ?>">

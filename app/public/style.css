@@ -19,6 +19,14 @@ body {
     font-size: 16px;
 }
 
+body.update {
+    height: 100vh;
+}
+
+body.update h1 {
+    margin-bottom: 40px;
+}
+
 body.login {
     height: 100vh;
 }
@@ -247,6 +255,6 @@ form.login {
 }
 
 .fa-tasks {
-    font-size: 2rem;
+    font-size: 2.8rem;
     padding: 1px;
 }

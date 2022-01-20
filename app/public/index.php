@@ -18,7 +18,7 @@ require_once "../db.php";
 </head>
 <body class="login">
     <main>
-        <h1>todo<i class="fas fa-tasks"></i>r</h1>
+        <h1>TODO<i class="fas fa-tasks"></i>R</h1>
 
         <div class="links-container">
             <span class="log-link" id="signupLink">sign up</span>
