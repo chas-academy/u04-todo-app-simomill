@@ -13,6 +13,7 @@ $today = date('Y-m-d');
 $tomorrow = new DateTime('tomorrow');
 $tomorrow = $tomorrow->format('Y-m-d');
 
+$today_num = intval(str_replace("-", "", $today));
 $tomorrow_num = intval(str_replace("-", "", $tomorrow));
 
 
@@ -41,6 +42,47 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
     <a href="add.php" class="add btn">Add Task</a>
 
     <?php   
+// ----------OVERDUE TASKS
+    $over_tasks = 0;
+
+    foreach ($tasks as $i => $task) {
+        if ($task['due_date'] !== null) {
+            
+            $due_num = intval(str_replace("-", "", $task['due_date']));
+
+            if ($due_num < $today_num) {
+                $over_tasks ++ ;   
+            }
+        }
+    }
+
+    if ($over_tasks !== 0) : ?>
+        
+        <h2 class="overdue">Overdue!</h2>
+
+        <div class="item heading">
+            <span>Task</span>
+            <span>Description</span>
+            <span>Due</span>
+            <span>Delete</span>
+            <span>Edit</span>
+            <span>Done</span>  
+        </div>
+
+    <?php endif; ?>
+
+    <?php foreach ($tasks as $i => $task) {
+        $due_num = intval(str_replace("-", "", $task['due_date']));
+        if ($due_num < $today_num) {
+            require '../../partials/_tableLoop.php';
+        }
+    }
+
+    if ($over_tasks !== 0) {
+    echo '<span class="divider"></span>';
+    }
+
+
 // ----------UNSCHEDULED TASKS
         
     $noday_tasks = 0;
@@ -158,10 +200,10 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
         if ($task['due_date'] !== null) {
             $due_num = intval(str_replace("-", "", $task['due_date']));
 
-            if ($due_num > $tomorrow_num) {
-                $later_tasks ++ ;   
-            }}
-        };
+        if ($due_num > $tomorrow_num) {
+            $later_tasks ++ ;   
+        }}
+    };
 
     if ($later_tasks !== 0): ?>
     
@@ -180,7 +222,7 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
 
     <?php foreach ($tasks as $i => $task) {
 
-        if ($task['due_date'] !== $today && $task['due_date'] !== $tomorrow && $task['due_date'] !== null) {
+        if ($task['due_date'] !== $today && $task['due_date'] !== $tomorrow && $task['due_date'] > $today_num) {
             require '../../partials/_tableLoop.php';
         }
     }
