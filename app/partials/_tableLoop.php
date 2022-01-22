@@ -14,7 +14,9 @@
         <?php if ($task['finnished'] === 1) {
                 echo 'class="finnished"';
             } ?>>
-        <?php echo $task['due_date'] ?></span>
+            <span class="iconify" data-icon="ci:calendar-calendar"></span>
+                <?php echo "\n" . $task['due_date'] ?>
+    </span>
 
     <form style="display: inline-block" action="delete.php" method="post">
         <input type="hidden" name="id" value="<?php echo $task['id'] ?>">

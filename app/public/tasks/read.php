@@ -29,7 +29,9 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
     <title>Todo App</title>
     <script src="https://kit.fontawesome.com/723fbc7b2c.js" 
     crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
 
 </head>
     <body>
@@ -62,15 +64,6 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
             if ($over_tasks !== 0) : ?>
                 
                 <h2 class="overdue">Overdue!</h2>
-
-                <!-- <div class="item heading">
-                    <span>Task</span>
-                    <span>Description</span>
-                    <span>Due</span>
-                    <span>Delete</span>
-                    <span>Edit</span>
-                    <span>Done</span>  
-                </div>  -->
                 
             <?php endif; ?>
 
@@ -101,15 +94,6 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
             
                 <h2>Unscheduled tasks</h2>
 
-                <div class="item heading">
-                        <span>Task</span>
-                        <span>Description</span>
-                        <span>Due</span>
-                        <span>Delete</span>
-                        <span>Edit</span>
-                        <span>Done</span>  
-                    </div>
-
             <?php endif; 
 
             foreach ($tasks as $i => $task) { 
@@ -134,16 +118,7 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
 
             if ($today_tasks !== 0): ?>
 
-                <h2>Today</h2>
-
-                <div class="item heading">
-                    <span>Task</span>
-                    <span>Description</span>
-                    <span>Due</span>
-                    <span>Delete</span>
-                    <span>Edit</span>
-                    <span>Done</span>  
-                </div>          
+                <h2>Today</h2>        
 
             <?php else: ?>
                 <?php if (empty($tasks)): ?>
@@ -173,15 +148,6 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
             if ($tmrws_tasks !== 0): ?>
                 
                 <h2>Tomorrow</h2>
-
-                <div class="item heading">
-                    <span>Task</span>
-                    <span>Description</span>
-                    <span>Due</span>
-                    <span>Delete</span>
-                    <span>Edit</span>
-                    <span>Done</span>  
-                </div>
                 
             <?php endif; ?>
 
@@ -212,15 +178,6 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
             
                 <h2>Later</h2>
 
-                <div class="item heading">
-                        <span>Task</span>
-                        <span>Description</span>
-                        <span>Due</span>
-                        <span>Delete</span>
-                        <span>Edit</span>
-                        <span>Done</span>  
-                    </div>
-            
             <?php endif; ?>
 
             <?php foreach ($tasks as $i => $task) {
