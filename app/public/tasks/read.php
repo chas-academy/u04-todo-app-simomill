@@ -1,6 +1,7 @@
 <?php
 /** @var $pdo \PDO */
 require_once "../../db.php";
+require_once 'functions.php';
 
 session_start();
 $userID = $_SESSION['userID'];
@@ -17,23 +18,10 @@ $tomorrow = $tomorrow->format('Y-m-d');
 
 $today_num = intval(str_replace("-", "", $today));
 $tomorrow_num = intval(str_replace("-", "", $tomorrow));
+
+require_once '../../partials/_head.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <title>Todo App</title>
-    <script src="https://kit.fontawesome.com/723fbc7b2c.js" 
-    crossorigin="anonymous"></script>
-    <script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    
-
-</head>
     <body>
         <main>
             <h1>TODO<i class="fas fa-tasks"></i>R</h1>
@@ -46,150 +34,9 @@ $tomorrow_num = intval(str_replace("-", "", $tomorrow));
             
             <a href="add.php" class="add btn">Add Task</a>
 
-            <?php   
-        // ----------OVERDUE TASKS
-            $over_tasks = 0;
-
-            foreach ($tasks as $i => $task) {
-                if ($task['due_date'] !== null) {
-
-                    $due_num = intval(str_replace("-", "", $task['due_date']));
-
-                    if ($due_num < $today_num) {
-                        $over_tasks ++ ;   
-                    }
-                }
-            }
-
-            if ($over_tasks !== 0) : ?>
-                
-                <h2 class="overdue">Overdue!</h2>
-                
-            <?php endif; ?>
-
-            <?php foreach ($tasks as $i => $task) {
-
-                $due_num = intval(str_replace("-", "", $task['due_date']));
-                
-                if ($due_num < $today_num) {
-                    require '../../partials/_tableLoop.php';
-                }
-            }
-
-            if ($over_tasks !== 0) {
-                echo '<span class="divider"></span>';
-            }
-
-
-        // ----------UNSCHEDULED TASKS
-                
-            $noday_tasks = 0;
-            
-            foreach ($tasks as $i => $task) {
-                if ($task['due_date'] === null) {
-                    $noday_tasks ++ ;   
-                }};
-
-            if ($noday_tasks !== 0): ?>
-            
-                <h2>Unscheduled tasks</h2>
-
-            <?php endif; 
-
-            foreach ($tasks as $i => $task) { 
-                if ($task['due_date'] === null) {
-                    require '../../partials/_tableLoop.php';
-                }
-            }
-            
-            if ($noday_tasks !== 0) {
-                echo '<span class="divider"></span>';
-            }
-
-            
-        //-----------TODAYS TASKS
-            
-            $today_tasks = 0;
-            
-            foreach ($tasks as $i => $task) {
-                if ($task['due_date'] === $today) {
-                    $today_tasks ++ ;   
-                }};
-
-            if ($today_tasks !== 0): ?>
-
-                <h2>Today</h2>        
-
-            <?php else: ?>
-                <?php if (empty($tasks)): ?>
-                    <h2>Nothing needs to be done today.</h2>
-                <?php endif; 
-            endif; ?>
-
-            <?php foreach ($tasks as $i => $task) {
-                if ($task['due_date'] === $today) {
-                    require '../../partials/_tableLoop.php';
-                }
-            }
-            
-            if ($today_tasks !== 0) {
-                echo '<span class="divider"></span>';
-            }
-
-        //----------TOMORROWS TASKS
-
-            $tmrws_tasks = 0;
-            
-            foreach ($tasks as $i => $task) {
-                if ($task['due_date'] === $tomorrow) {
-                    $tmrws_tasks ++ ;   
-                }};
-
-            if ($tmrws_tasks !== 0): ?>
-                
-                <h2>Tomorrow</h2>
-                
-            <?php endif; ?>
-
-            <?php foreach ($tasks as $i => $task) {
-                if ($task['due_date'] === $tomorrow) {
-                    require '../../partials/_tableLoop.php';
-                }
-            }
-            
-            if ($tmrws_tasks !== 0) {
-                echo '<span class="divider"></span>';
-            }
-
-        //----------LATER TASKS
-
-            $later_tasks = 0;
-
-            foreach ($tasks as $i => $task) {
-                if ($task['due_date'] !== null) {
-                    $due_num = intval(str_replace("-", "", $task['due_date']));
-
-                if ($due_num > $tomorrow_num) {
-                    $later_tasks ++ ;   
-                }}
-            };
-
-            if ($later_tasks !== 0): ?>
-            
-                <h2>Later</h2>
-
-            <?php endif; ?>
-
-            <?php foreach ($tasks as $i => $task) {
-                if ($task['due_date'] !== $today && $task['due_date'] !== $tomorrow 
-                    && $task['due_date'] > $today_num) {
-                        require '../../partials/_tableLoop.php';
-                }
-            }
-
-            if ($later_tasks !== 0) {
-                echo '<span class="divider"></span>';
-            } ?>
+            <!-- Print Start -->
+            <?php printTasks(); ?>
+            <!-- Print ending -->
         </main>
     </body>
 </html>

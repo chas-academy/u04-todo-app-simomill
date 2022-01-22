@@ -1,21 +1,9 @@
 <?php
 /** @var $pdo \PDO */
 require_once "../db.php";
-
+require_once '../../partials/_head.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../style.css">
-    <script src="login/app.js" defer></script>
-    <script src="https://kit.fontawesome.com/723fbc7b2c.js" crossorigin="anonymous"></script>
-
-</head>
 <body class="login">
     <main>
         <h1>TODO<i class="fas fa-tasks"></i>R</h1>

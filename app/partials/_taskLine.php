@@ -3,7 +3,7 @@
         <?php if ($task['finnished'] === 1) {
                 echo 'class="finnished"';
             } ?>>
-        <?php echo $task['title'] ?></span>
+        <?php echo $i+1 . ". " . $task['title'] ?></span>
 
     <span class="desc <?php if ($task['finnished'] === 1) {
                 echo "finnished";

@@ -128,7 +128,7 @@ a:hover, .log-link:hover {
 }
 
 .divider {
-    border-bottom: 1px solid rgb(118, 118, 118);
+    border-bottom: 1px solid rgb(223, 221, 221);
     display: block; 
 }
 
@@ -137,6 +137,7 @@ input.larger {
     position: relative;
     cursor: pointer;
 }
+
 
 /* check-symbol unchecked(invisible) */
 input[type="checkbox"]::before {
@@ -197,18 +198,10 @@ input[type="checkbox"]:hover::after {
 input[type="checkbox"]:focus::after {
     border-color: rgb(0, 0, 0);
     border-width: 1.5px;
-
-
 }
 
 .desc {
     color: rgb(146, 145, 145);
-}
-
-.heading {
-    font-weight: 700;
-    border-bottom: 1px solid rgb(161, 159, 159);
-    color: rgb(175, 174, 174);
 }
 
 form.login {
