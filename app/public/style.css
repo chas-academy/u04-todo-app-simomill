@@ -2,7 +2,6 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-
 }
 
 header {
@@ -18,7 +17,6 @@ body {
     align-items: center;
     font-size: 16px;
     height: 100vh;
-
 }
 
 body.update h1 {
@@ -37,7 +35,6 @@ main {
 h2 {
     margin: 40px;
     text-align: center;
-
 }
 
 h1 {
@@ -136,11 +133,8 @@ a:hover, .log-link:hover {
 }
 
 input.larger {
-    /* width: 20px;
-    height: 20px; */
     border-radius: 10px;
     position: relative;
-    /* opacity: 0; */
     cursor: pointer;
 }
 

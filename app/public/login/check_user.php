@@ -3,7 +3,6 @@
 require_once "../../db.php";
 require_once "create_user_function.php";
 
-
 $statement = $pdo->prepare('SELECT * FROM simondb.users');
 $statement->execute();
 $users = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -20,7 +19,6 @@ foreach($users as $i => $user) {
     }
 }
 
-
 if ($alreadyExists === 0) {
     if (isset($_POST['signupPass'])) {
         create_user();
@@ -33,17 +31,15 @@ if ($alreadyExists === 0) {
 
 //-----CHECK PASSWORD
 if (isset($_POST['loginPass'])) {
-$password = password_hash($_POST['loginPass'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['loginPass'], PASSWORD_DEFAULT);
 }
 
-if ($alreadyExists != 0) {
-    
+if ($alreadyExists != 0) { 
     if (password_verify($_POST['loginPass'], $userMatch['password'])) {
         header('Location: ../tasks/read.php');
     } else {
         header('Location: ../index.php?msg=Wrong password.');  
     }
-
 } else {
     if (password_verify($_POST['loginPass'], $userMatch['password'])) {
         header('Location: ../tasks/read.php');

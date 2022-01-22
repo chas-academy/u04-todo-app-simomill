@@ -1,5 +1,4 @@
 <?php
-
 /** @var $pdo \PDO */
 require_once "../../db.php";
 
@@ -25,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newDesc = $_POST['description'];
     $newDue = $_POST['due_date'];
 
-    $statement = $pdo->prepare("UPDATE simondb.tasks SET title = :title, description = :description, due_date = :due_date WHERE id = :id");
+    $statement = $pdo->prepare("UPDATE simondb.tasks SET title = :title, 
+    description = :description, due_date = :due_date WHERE id = :id");
 
     $statement->bindValue(':title', $newTitle);
     $statement->bindValue(':description', $newDesc);
@@ -33,32 +33,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $statement->bindValue(':id', $id);
     $statement->execute();
     header('Location: read.php');
-
 } 
-
 ?>
-    <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <title>Add Task</title>
-</head>
-    <body class="update">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+        <title>Add Task</title>
+    </head>
+        <body class="update">
 
-    <h1>Update task: <br> "<?php echo($task['title'])  ?>"</h1>
+        <h1>Update task: <br> "<?php echo($task['title'])  ?>"</h1>
 
-        <form action="" method="POST" class="create">
-            <input type="text" name="title" required placeholder="New task" value="<?php echo $title; ?>">
-            <textarea name="description" placeholder="Description"><?php echo $description; ?></textarea>
-            <input type="date" name="due_date" id="" min="<?php echo date('Y-m-d'); ?>" value="<?php echo $due_date; ?>">
-            <button type="submit" class="btn">Update</button>
-        </form>
+            <form action="" method="POST" class="create">
+                <input type="text" name="title" required placeholder="New task" 
+                value="<?php echo $title; ?>">
+                <textarea name="description" placeholder="Description">
+                    <?php echo $description; ?>
+                </textarea>
+                <input type="date" name="due_date" id="" 
+                min="<?php echo date('Y-m-d'); ?>" 
+                value="<?php echo $due_date; ?>">
+                <button type="submit" class="btn">Update</button>
+            </form>
 
-        <a href="read.php">← Go back</a>
-    </body>
+            <a href="read.php">← Go back</a>
+        </body>
 </html>
-        
-
