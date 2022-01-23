@@ -1,7 +1,7 @@
 <?php
 /** @var $pdo \PDO */
-require_once "../../db.php";
-require_once 'functions.php';
+require_once "../resources/db.php";
+require_once '../resources/functions.php';
 
 session_start();
 $userID = $_SESSION['userID'];
@@ -19,7 +19,7 @@ $tomorrow = $tomorrow->format('Y-m-d');
 $today_num = intval(str_replace("-", "", $today));
 $tomorrow_num = intval(str_replace("-", "", $tomorrow));
 
-require_once '../../partials/_head.php';
+require_once '../resources/partials/_head.php';
 ?>
 
     <body>
@@ -27,16 +27,16 @@ require_once '../../partials/_head.php';
             <h1>TODO<i class="fas fa-tasks"></i>R</h1>
 
             <div class="logout-container">
-                <a class="log-link" href="../index.php">Log out 
+                <a class="log-link" href="index.php">Log out 
                     <i class="fas fa-sign-out-alt"></i>
                 </a>
             </div>
             
             <a href="add.php" class="add btn">Add Task</a>
 
-            <!-- Print Start -->
+            <!-- Print Out Tasks -->
             <?php printTasks(); ?>
-            <!-- Print ending -->
+            
         </main>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 /** @var $pdo \PDO */
-require_once "../../db.php";
-require_once "create_user_function.php";
+require_once "../resources/db.php";
+require_once "../resources/functions.php";
 
 $statement = $pdo->prepare('SELECT * FROM simondb.users');
 $statement->execute();
@@ -25,7 +25,7 @@ if ($alreadyExists === 0) {
     }
 } else {
     if (isset($_POST['signupPass'])) {
-        header('Location: ../index.php?msg=User already exists.');  
+        header('Location: index.php?msg=User already exists.');  
     }
 }
 
@@ -36,15 +36,15 @@ if (isset($_POST['loginPass'])) {
 
 if ($alreadyExists != 0) { 
     if (password_verify($_POST['loginPass'], $userMatch['password'])) {
-        header('Location: ../tasks/read.php');
+        header('Location: read.php');
     } else {
-        header('Location: ../index.php?msg=Wrong password.');  
+        header('Location: index.php?msg=Wrong password.');  
     }
 } else {
     if (password_verify($_POST['loginPass'], $userMatch['password'])) {
-        header('Location: ../tasks/read.php');
+        header('Location: read.php');
     } else {
-        header('Location: ../index.php?msg=User does not exist.');
+        header('Location: index.php?msg=User does not exist.');
     }
 }
 

@@ -1,7 +1,7 @@
 <?php
 /** @var $pdo \PDO */
-require_once "../db.php";
-require_once '../../partials/_head.php';
+require_once "../resources/db.php";
+require_once '../resources/partials/_head.php';
 ?>
 
 <body class="login">
@@ -17,7 +17,7 @@ require_once '../../partials/_head.php';
                         echo $_GET['msg'];
                     } ?></p>
             
-        <form action="login/check_user.php" method="post" class="login" id="signin">  
+        <form action="check_user.php" method="post" class="login" id="signin">  
                 <input type="text" id="user_signin" name="username" placeholder="username">
 
                 <input type="password" name="loginPass" id="pass_signin" placeholder="password">
@@ -25,7 +25,7 @@ require_once '../../partials/_head.php';
                 <input type="submit" value="Login" class="btn">
         </form>
 
-        <form action="login/check_user.php" method="post" class="login" id="signup">  
+        <form action="check_user.php" method="post" class="login" id="signup">  
                 <input type="text" id="user_signup" name="username" placeholder="username" required>
 
                 <input type="password" name="signupPass" id="pass_signup" placeholder="password" required>

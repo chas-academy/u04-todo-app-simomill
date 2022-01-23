@@ -40,7 +40,7 @@ function printTasks()
             
         <?php 
         foreach ($over_tasks as $i => $task) {
-            require '../../partials/_taskLine.php';
+            require '../resources/partials/_taskLine.php';
         } 
     endif;
 
@@ -50,7 +50,7 @@ function printTasks()
         <h2>Today</h2> 
         
         <?php foreach ($today_tasks as $i => $task) {
-        require '../../partials/_taskLine.php';
+        require '../resources/partials/_taskLine.php';
         }
 
         echo '<span class="divider"></span>';
@@ -67,7 +67,7 @@ function printTasks()
         <h2>Tomorrow</h2>
 
         <?php foreach ($tmrws_tasks as $i => $task) {
-            require '../../partials/_taskLine.php';
+            require '../resources/partials/_taskLine.php';
         }
 
         echo '<span class="divider"></span>';
@@ -80,10 +80,27 @@ function printTasks()
         <h2>Later</h2>
 
         <?php foreach ($later_tasks as $i => $task) {
-            require '../../partials/_taskLine.php';
+            require '../resources/partials/_taskLine.php';
         }
 
         echo '<span class="divider"></span>';
 
     endif;
+}
+
+function create_user() 
+{    
+    global $pdo;
+    $username = $_POST['username'];
+    $password = password_hash($_POST['signupPass'], PASSWORD_DEFAULT);
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $statement = $pdo->prepare("INSERT INTO simondb.users (username, password)
+            VALUES (:username, :password)");
+
+        $statement->bindValue(':username', $username);
+        $statement->bindValue(':password', $password);
+        $statement->execute();
+        header('Location: read.php');
+    }
 }
