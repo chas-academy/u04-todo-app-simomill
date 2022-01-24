@@ -53,6 +53,13 @@ function printTasks()
         require '../resources/partials/_taskLine.php';
         }
 
+        // UNSCHEDULED
+        if (count($noday_tasks) != 0) {
+            foreach ($noday_tasks as $i => $task) {
+                require '../resources/partials/_taskLine.php';
+                }
+        }
+
         echo '<span class="divider"></span>';
 
         else:
@@ -70,6 +77,16 @@ function printTasks()
             require '../resources/partials/_taskLine.php';
         }
 
+        //UNSCHEDULED - IF THEY ARE NOT ALREADY DISPLAYED
+        if (count($today_tasks) == 0) {
+          
+            if (count($noday_tasks) != 0) {
+                foreach ($noday_tasks as $i => $task) {
+                    require '../resources/partials/_taskLine.php';
+                    }
+            }
+        }
+
         echo '<span class="divider"></span>';
 
     endif; 
@@ -83,11 +100,22 @@ function printTasks()
             require '../resources/partials/_taskLine.php';
         }
 
+        // UNSCHEDULED TASKS - IF THEY ARE NOT ALREADY DISPLAYED
+        if (count($today_tasks) == 0 && count($tmrws_tasks) == 0) {
+          
+            if (count($noday_tasks) != 0) {
+                foreach ($noday_tasks as $i => $task) {
+                    require '../resources/partials/_taskLine.php';
+                    }
+            }
+        }
+
         echo '<span class="divider"></span>';
 
     endif;
 }
 
+// FUNCTION TO CREATE NEW USER
 function create_user() 
 {    
     global $pdo;
@@ -101,6 +129,6 @@ function create_user()
         $statement->bindValue(':username', $username);
         $statement->bindValue(':password', $password);
         $statement->execute();
-        header('Location: read.php');
+
     }
 }

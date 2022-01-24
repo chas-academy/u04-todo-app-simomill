@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $statement->bindValue(':title', $newTitle);
     $statement->bindValue(':description', $newDesc);
-    $statement->bindValue(':urgency', $newDue);
+    $statement->bindValue(':due_date', $newDue);
     $statement->bindValue(':id', $id);
     $statement->execute();
     header('Location: read.php');

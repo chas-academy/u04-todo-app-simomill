@@ -22,6 +22,8 @@ foreach($users as $i => $user) {
 if ($alreadyExists === 0) {
     if (isset($_POST['signupPass'])) {
         create_user();
+        
+        header('Location: index.php?green=User was successfully created.');
     }
 } else {
     if (isset($_POST['signupPass'])) {

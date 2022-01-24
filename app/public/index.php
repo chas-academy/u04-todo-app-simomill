@@ -13,18 +13,26 @@ require_once '../resources/partials/_head.php';
             <span class="log-link" id="loginLink">sign in</span>
         </div>
 
-        <p id="user_msg" class="error"><?php if(isset($_GET['msg'])) {
+        <p id="error_msg" class="error"><?php if(isset($_GET['msg'])) {
                         echo $_GET['msg'];
                     } ?></p>
+        <p id="success_msg" class="success"><?php if(isset($_GET['green'])) {
+                        echo $_GET['green'];
+                    } ?></p>
             
+<!-- LOGIN FORM -->
         <form action="check_user.php" method="post" class="login" id="signin">  
-                <input type="text" id="user_signin" name="username" placeholder="username">
+                <input type="text" id="user_signin" name="username" placeholder="username" 
+                value="<?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    echo $_POST['username'];
+                }?>">
 
                 <input type="password" name="loginPass" id="pass_signin" placeholder="password">
                 
                 <input type="submit" value="Login" class="btn">
         </form>
 
+<!-- SIGNUP FORM -->
         <form action="check_user.php" method="post" class="login" id="signup">  
                 <input type="text" id="user_signup" name="username" placeholder="username" required>
 

@@ -88,32 +88,33 @@ a:hover, .log-link:hover {
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
-    /* display: none; */
     position: relative;
 }
 
 .fa-times {
-    font-size: 19px;
+    font-size: 22px;
 }
 
 .small {
-    height: 20px;
+    height: 23px;
+    width: 23px;
+    border-radius: 50%;
 }
 
-.btn:hover {
-    color: inherit;
-    background-color: rgb(151, 220, 252);
-    border-color: rgb(66, 158, 201);
+.del {
+    padding: 0;
+    background-color: transparent;
+    border: none;
 }
 
-.del:hover {
-    background-color: rgb(255, 174, 174);
-    border-color: rgb(165, 62, 62);
+.fa-times:hover {
+    color: rgb(207, 30, 30);
 }
 
 .add:hover {
     background-color: rgb(181, 255, 174);
     border-color: rgb(62, 165, 79);
+    color: inherit;
 }
 
 .item {
@@ -139,33 +140,17 @@ input.larger {
 }
 
 
-/* check-symbol unchecked(invisible) */
-input[type="checkbox"]::before {
-    position: absolute;
-    display: block;
-    content: "";
-    top: -2px;
-    left: 3px;
-    width: 6px;
-    height: 10px;
-    border-bottom: 3px solid rgb(0, 0, 0);
-    border-right: 3px solid rgb(0, 0, 0);
-    transform: rotate(45deg);
-    opacity: 0; 
-    z-index: 4;
-}
-
 /* check-symbol checked */
 input[type="checkbox"]:checked::before {
     position: absolute;
     display: block;
     content: "";
-    top: 0px;
-    left: 4px;
+    top: 0;
+    left: 2px;
     width: 6px;
     height: 10px;
-    border-bottom: 3px solid rgb(0, 0, 0);
-    border-right: 3px solid rgb(0, 0, 0);
+    border-bottom: 3px solid rgb(54, 54, 54);
+    border-right: 3px solid rgb(54, 54, 54);
     transform: rotate(45deg);
     opacity: 1; 
     z-index: 4;
@@ -176,13 +161,13 @@ input[type="checkbox"]::after {
     position: absolute;
     display: block;
     content: "";
-    top: -1px;
-    left: -3px;
-    width: 22px;
+    top: -3px;
+    left: -4px;
+    width: 19px;
     height: 19px;
     background-color: rgb(239, 239, 239);
     border: 1px solid rgb(118, 118, 118);
-    border-radius: 5px;
+    border-radius: 50%;
     opacity: 1; 
     z-index: 2;
 }
@@ -223,6 +208,10 @@ form.login {
     padding: 10px;
     color: rgb(143, 10, 10);
     border-radius: 5px;
+}
+
+.success {
+    color: rgb(1, 150, 1);
 }
 
 .logout-container {
