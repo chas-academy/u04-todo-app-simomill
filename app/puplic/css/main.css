@@ -1,0 +1,266 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body {
+  font-family: sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 16px;
+  height: 100vh;
+}
+
+body .update h1 {
+  margin-bottom: 40px;
+}
+
+body.login {
+  height: 100vh;
+}
+
+main {
+  margin: 100px 0;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2 {
+  margin: 40px;
+  text-align: center;
+}
+
+a.add {
+  display: block;
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+  margin: 40px 0;
+  background-color: #efefef;
+  border: 1px solid #767676;
+}
+
+a.add:hover {
+  background-color: #b5ffae;
+  border-color: #3ea54f;
+  color: inherit;
+}
+
+.item a {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover, a .log-link:hover {
+  color: #429ec9;
+}
+
+.create input, .create textarea, .create button, .create select {
+  display: block;
+  margin-bottom: 10px;
+  width: 400px;
+  max-width: 400px;
+  border-radius: 5px;
+  border: 1px solid #767676;
+  padding: 4px;
+}
+
+.create textarea {
+  height: 150px;
+}
+
+.btn {
+  padding: 0 5px;
+  font-size: inherit;
+  background-color: #efefef;
+  border: 1px solid #767676;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+}
+
+.fa-times {
+  font-size: 22px;
+}
+
+.fa-times:hover {
+  color: #cf1e1e;
+}
+
+.small {
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+}
+
+.del {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 150px 200px 150px (55px)[3];
+      grid-template-columns: 150px 200px 150px repeat(3, 55px);
+  grid-gap: 5px;
+  margin-bottom: 10px;
+}
+
+.item .desc {
+  color: #929191;
+}
+
+.finnished {
+  text-decoration: line-through;
+}
+
+.divider {
+  border-bottom: 1px solid #dfdddd;
+  display: block;
+}
+
+input.larger {
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* check-symbol checked */
+input[type="checkbox"]:checked::before {
+  position: absolute;
+  display: block;
+  content: "";
+  top: 0;
+  left: 2px;
+  width: 6px;
+  height: 10px;
+  border-bottom: 3px solid #363636;
+  border-right: 3px solid #363636;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  opacity: 1;
+  z-index: 4;
+}
+
+/* checkbox - the box */
+input[type="checkbox"]::after {
+  position: absolute;
+  display: block;
+  content: "";
+  top: -3px;
+  left: -4px;
+  width: 19px;
+  height: 19px;
+  background-color: #efefef;
+  border: 1px solid #767676;
+  border-radius: 50%;
+  opacity: 1;
+  z-index: 2;
+}
+
+/* checkbox - mouseover the box */
+input[type="checkbox"]:hover::after {
+  background-color: #b5ffae;
+  border-color: #3ea54f;
+}
+
+/* checkbox - tabfocus on the box */
+input[type="checkbox"]:focus::after {
+  border-color: black;
+  border-width: 1.5px;
+}
+
+form.login {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+}
+
+.log-link {
+  cursor: pointer;
+  color: #484848;
+}
+
+.error {
+  margin-top: 20px;
+  padding: 10px;
+  color: #8f0a0a;
+  border-radius: 5px;
+}
+
+.success {
+  color: #019601;
+}
+
+.logout-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.links-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.fa-tasks {
+  font-size: 2.8rem;
+  padding: 1px;
+}
+
+.overdue {
+  color: #8f0a0a;
+}
+/*# sourceMappingURL=main.css.map */

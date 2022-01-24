@@ -43,11 +43,8 @@ if ($alreadyExists != 0) {
         header('Location: index.php?msg=Wrong password.');  
     }
 } else {
-    if (password_verify($_POST['loginPass'], $userMatch['password'])) {
-        header('Location: read.php');
-    } else {
-        header('Location: index.php?msg=User does not exist.');
-    }
+    header('Location: index.php?msg=User does not exist.');
+
 }
 
 session_start();

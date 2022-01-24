@@ -1,3 +1,5 @@
+@import 'variables';
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -17,29 +19,28 @@ body {
     align-items: center;
     font-size: 16px;
     height: 100vh;
-}
 
-body.update h1 {
-    margin-bottom: 40px;
-}
+    .update h1 {
+        margin-bottom: 40px;
+    }
 
-body.login {
-    height: 100vh;
+    &.login {
+        height: 100vh;
+    }
 }
 
 main {
     margin: 100px 0;
 }
 
-
-h2 {
-    margin: 40px;
-    text-align: center;
-}
-
 h1 {
     font-size: 3rem;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    margin: 40px;
     text-align: center;
 }
 
@@ -49,8 +50,14 @@ a.add  {
     padding: 5px;   
     width: 100%;
     margin: 40px 0;
-    background-color: rgb(239, 239, 239);
-    border: 1px solid rgb(118, 118, 118);
+    background-color: $off-white;
+    border: 1px solid $dark-grey;
+
+    &:hover {
+        background-color: $light-green;
+        border-color: $dark-green;
+        color: inherit;
+    }
 }
 
 .item a {
@@ -59,21 +66,24 @@ a.add  {
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: inherit;  
 }
 
 a:hover, .log-link:hover {
-    color: rgb(66, 158, 201);
+        color: $turquise;
+}
+
+input, textarea button select {
+    border-radius: 5px;
+    border: 1px solid $dark-grey;
+    padding: 4px;
 }
 
 .create input, .create textarea, .create button, .create select {
-    display: block;
-    margin-bottom: 10px;
-    width: 400px;
-    max-width: 400px;
-    border-radius: 5px;
-    border: 1px solid rgb(118, 118, 118);
-    padding: 4px;
+display: block;
+margin-bottom: 10px;
+width: 400px;
+max-width: 400px;
 }
 
 .create textarea {
@@ -83,8 +93,8 @@ a:hover, .log-link:hover {
 .btn {
     padding: 0 5px;
     font-size: inherit;
-    background-color: rgb(239, 239, 239);
-    border: 1px solid rgb(118, 118, 118);
+    background-color: $off-white;
+    border: 1px solid $dark-grey;
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
@@ -93,6 +103,10 @@ a:hover, .log-link:hover {
 
 .fa-times {
     font-size: 22px;
+
+    &:hover {
+        color: $light-red;
+    }
 }
 
 .small {
@@ -107,21 +121,15 @@ a:hover, .log-link:hover {
     border: none;
 }
 
-.fa-times:hover {
-    color: rgb(207, 30, 30);
-}
-
-.add:hover {
-    background-color: rgb(181, 255, 174);
-    border-color: rgb(62, 165, 79);
-    color: inherit;
-}
-
 .item {
     display: grid;
     grid-template-columns: 150px 200px 150px repeat(3, 55px);
     grid-gap: 5px;
     margin-bottom: 10px;
+
+    .desc {
+        color: $light-grey;
+    }
 }
 
 .finnished {
@@ -129,7 +137,7 @@ a:hover, .log-link:hover {
 }
 
 .divider {
-    border-bottom: 1px solid rgb(223, 221, 221);
+    border-bottom: 1px solid $lighter-grey;
     display: block; 
 }
 
@@ -138,7 +146,6 @@ input.larger {
     position: relative;
     cursor: pointer;
 }
-
 
 /* check-symbol checked */
 input[type="checkbox"]:checked::before {
@@ -149,8 +156,8 @@ input[type="checkbox"]:checked::before {
     left: 2px;
     width: 6px;
     height: 10px;
-    border-bottom: 3px solid rgb(54, 54, 54);
-    border-right: 3px solid rgb(54, 54, 54);
+    border-bottom: 3px solid $darker-grey;
+    border-right: 3px solid $darker-grey;
     transform: rotate(45deg);
     opacity: 1; 
     z-index: 4;
@@ -165,8 +172,8 @@ input[type="checkbox"]::after {
     left: -4px;
     width: 19px;
     height: 19px;
-    background-color: rgb(239, 239, 239);
-    border: 1px solid rgb(118, 118, 118);
+    background-color: $off-white;
+    border: 1px solid $dark-grey;
     border-radius: 50%;
     opacity: 1; 
     z-index: 2;
@@ -174,8 +181,8 @@ input[type="checkbox"]::after {
 
 /* checkbox - mouseover the box */
 input[type="checkbox"]:hover::after {
-    background-color: rgb(181, 255, 174);
-    border-color: rgb(62, 165, 79);
+    background-color: $light-green;
+    border-color: $dark-green;
 
 }
 
@@ -183,10 +190,6 @@ input[type="checkbox"]:hover::after {
 input[type="checkbox"]:focus::after {
     border-color: rgb(0, 0, 0);
     border-width: 1.5px;
-}
-
-.desc {
-    color: rgb(146, 145, 145);
 }
 
 form.login {
@@ -200,18 +203,18 @@ form.login {
 
 .log-link {
     cursor: pointer;
-    color: rgb(72 72 72);
+    color: $darker-grey;
 }
 
 .error {
     margin-top: 20px;
     padding: 10px;
-    color: rgb(143, 10, 10);
+    color: $red;
     border-radius: 5px;
 }
 
 .success {
-    color: rgb(1, 150, 1);
+    color: $vivid-green;
 }
 
 .logout-container {
@@ -224,15 +227,11 @@ form.login {
     justify-content: space-around;
 }
 
-.fa-sign-out-alt {
-    font-weight:lighter;
-}
-
 .fa-tasks {
     font-size: 2.8rem;
     padding: 1px;
 }
 
 .overdue {
-    color:rgb(143, 10, 10);
+    color: $red;
 }
