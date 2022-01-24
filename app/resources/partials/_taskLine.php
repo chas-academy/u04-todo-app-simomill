@@ -24,12 +24,15 @@
         
         
         <button class="del small" type="submit">
-        <i class="fas fa-times"></i>
+        <i class="fas fa-times<?php if ($task['finnished'] === 1) {
+            echo " finnished_btn";
+        } ?>"></i>
         </button>
     </form>   
     
     <a class="" href="update.php?id=<?php echo $task['id'] ?>">
-        <i class="fas fa-pencil-alt"></i>
+        <i class="fas fa-pencil-alt<?php if ($task['finnished'] === 1) {
+            echo " finnished_btn";} ?>"></i>
     </a>
 
     <form action="complete.php" method="post" id="completed_form">

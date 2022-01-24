@@ -92,7 +92,7 @@ a {
   color: inherit;
 }
 
-a:hover, .log-link:hover {
+a:hover, .log-link:hover, .fa-pencil-alt:hover {
   color: #297eb6;
 }
 
@@ -139,6 +139,15 @@ input, textarea, button, select {
   cursor: pointer;
 }
 
+.finnished {
+  text-decoration: line-through;
+  color: #686868;
+}
+
+.finnished_btn {
+  color: #686868;
+}
+
 .item {
   display: -ms-grid;
   display: grid;
@@ -152,9 +161,10 @@ input, textarea, button, select {
   color: #686868;
 }
 
-.finnished {
-  text-decoration: line-through;
-  color: #686868;
+.item a {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .divider {

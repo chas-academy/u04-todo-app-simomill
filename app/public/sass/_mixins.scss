@@ -1,0 +1,8 @@
+@mixin finnished($item) {
+    @if $item == "button" {
+        color: $light-grey;
+    } @else {
+        text-decoration: line-through;
+        color: $light-grey;
+    }
+}
