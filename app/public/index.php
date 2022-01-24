@@ -42,7 +42,7 @@ require_once '../resources/partials/_head.php';
 
                 <p class="error" id="pass_msg"></p>
 
-                <button type="submit" class="btn" id="signup_submit">Sign up</button>
+                <input type="submit" class="btn" id="signup_submit" value="Sign up">
         </form>
     </main>
 

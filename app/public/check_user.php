@@ -34,17 +34,17 @@ if ($alreadyExists === 0) {
 //-----CHECK PASSWORD
 if (isset($_POST['loginPass'])) {
     $password = password_hash($_POST['loginPass'], PASSWORD_DEFAULT);
-}
 
-if ($alreadyExists != 0) { 
-    if (password_verify($_POST['loginPass'], $userMatch['password'])) {
-        header('Location: read.php');
+
+    if ($alreadyExists != 0) { 
+        if (password_verify($_POST['loginPass'], $userMatch['password'])) {
+            header('Location: read.php');
+        } else {
+            header('Location: index.php?msg=Wrong password.');  
+        }
     } else {
-        header('Location: index.php?msg=Wrong password.');  
+        header('Location: index.php?msg=User does not exist.');
     }
-} else {
-    header('Location: index.php?msg=User does not exist.');
-
 }
 
 session_start();

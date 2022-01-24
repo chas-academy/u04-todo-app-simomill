@@ -12,13 +12,16 @@ header {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'Rubik', 'Open Sans', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     height: 100vh;
+    background: linear-gradient(to top, #a7d6fc 0%,#c9e9ff 100%);
+    background: $white;
+    color: $black;
 
     .update h1 {
         margin-bottom: 40px;
@@ -42,20 +45,24 @@ h1 {
 h2 {
     margin: 40px;
     text-align: center;
+    font-weight: 600;
 }
 
-a.add  {
+.btn  {
     display: block;
     text-align: center;
     padding: 5px;   
     width: 100%;
-    margin: 40px 0;
     background-color: $off-white;
     border: 1px solid $dark-grey;
+    font-size: inherit;
+    cursor: pointer;
+    position: relative;
 
     &:hover {
-        background-color: $light-green;
+        background-color: rgb(56, 56, 56);
         border-color: $dark-green;
+        border-color:$darker-grey;
         color: inherit;
     }
 }
@@ -70,39 +77,34 @@ a {
 }
 
 a:hover, .log-link:hover {
-        color: $turquise;
+        color: $light-blue;
 }
 
-input, textarea button select {
+
+input, textarea, button, select {
     border-radius: 5px;
     border: 1px solid $dark-grey;
     padding: 4px;
+    color: inherit;
+}
+
+::-webkit-calendar-picker-indicator {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
 }
 
 .create input, .create textarea, .create button, .create select {
 display: block;
 margin-bottom: 10px;
-width: 400px;
-max-width: 400px;
+width: 100%;
 }
 
 .create textarea {
     height: 150px;
 }
 
-.btn {
-    padding: 0 5px;
-    font-size: inherit;
-    background-color: $off-white;
-    border: 1px solid $dark-grey;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    position: relative;
-}
-
 .fa-times {
     font-size: 22px;
+    color: $black;
 
     &:hover {
         color: $light-red;
@@ -119,6 +121,7 @@ max-width: 400px;
     padding: 0;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .item {
@@ -134,6 +137,7 @@ max-width: 400px;
 
 .finnished {
     text-decoration: line-through;
+    color: $light-grey;
 }
 
 .divider {
@@ -145,6 +149,7 @@ input.larger {
     border-radius: 10px;
     position: relative;
     cursor: pointer;
+    width: 2%;
 }
 
 /* check-symbol checked */
@@ -152,12 +157,12 @@ input[type="checkbox"]:checked::before {
     position: absolute;
     display: block;
     content: "";
-    top: 0;
-    left: 2px;
+    top: 1px;
+    left: 4px;
     width: 6px;
     height: 10px;
-    border-bottom: 3px solid $darker-grey;
-    border-right: 3px solid $darker-grey;
+    border-bottom: 3px solid $black;
+    border-right: 3px solid $black;
     transform: rotate(45deg);
     opacity: 1; 
     z-index: 4;
@@ -168,8 +173,8 @@ input[type="checkbox"]::after {
     position: absolute;
     display: block;
     content: "";
-    top: -3px;
-    left: -4px;
+    top: -2px;
+    left: -2px;
     width: 19px;
     height: 19px;
     background-color: $off-white;
@@ -181,8 +186,14 @@ input[type="checkbox"]::after {
 
 /* checkbox - mouseover the box */
 input[type="checkbox"]:hover::after {
-    background-color: $light-green;
+    // background-color: $white;
     border-color: $dark-green;
+
+}
+
+input[type="checkbox"]:checked::after {
+    background-color: $white;
+    border-color: $darker-grey;
 
 }
 
@@ -199,11 +210,23 @@ form.login {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    width: 100%;
+}
+
+input, input::placeholder, textarea {
+    width: 100%;
+    background-color: $off-white;
+    color: $black;
+}
+input[type="submit"] {
+    background-color: rgb(43, 42, 42);
+    border-color: rgb(85, 85, 85);
+    color: rgb(214, 214, 214);
 }
 
 .log-link {
     cursor: pointer;
-    color: $darker-grey;
+    color: $dark-grey;
 }
 
 .error {
@@ -220,6 +243,7 @@ form.login {
 .logout-container {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 40px;
 }
 
 .links-container {
@@ -232,6 +256,21 @@ form.login {
     padding: 1px;
 }
 
+
 .overdue {
     color: $red;
+}
+
+@media only screen  and (max-width: 700px) {
+
+    main {
+        padding:  15px;
+    }
+
+    .item {
+        grid-template-columns: 1fr 2fr 1fr repeat(3, 40px);
+        grid-gap: 3px;
+        // margin-bottom: 10px; 
+    }
+
 }

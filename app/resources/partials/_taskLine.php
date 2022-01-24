@@ -23,7 +23,7 @@
         <input type="hidden" name="id" value="<?php echo $task['id'] ?>">
         
         
-        <button class="btn del small" type="submit">
+        <button class="del small" type="submit">
         <i class="fas fa-times"></i>
         </button>
     </form>   

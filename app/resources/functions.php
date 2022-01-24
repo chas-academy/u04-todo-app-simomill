@@ -65,7 +65,9 @@ function printTasks()
         else:
             if (count($over_tasks) === 0): ?>
                 <h2>Nothing needs to be done today.</h2>
-            <?php endif;
+                
+                <?php echo '<span class="divider"></span>';
+            endif;
     endif;
 
     // TOMORROW
