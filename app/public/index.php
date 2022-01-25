@@ -1,5 +1,6 @@
 <?php
 /** @var $pdo \PDO */
+
 require_once "../resources/db.php";
 require_once '../resources/partials/_head.php';
 ?>

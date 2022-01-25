@@ -2,11 +2,16 @@
 
 function printTasks() 
 {
+// --------------------VARIABLES
     global $tasks;
-    global $today;
-    global $tomorrow;
-    global $today_num;
-    global $tomorrow_num;
+// VARIABLES FOR THE DAYS
+    $today = date('Y-m-d');
+    $tomorrow = new DateTime('tomorrow');
+    $tomorrow = $tomorrow->format('Y-m-d');
+    $today_num = intval(str_replace("-", "", $today));
+    $tomorrow_num = intval(str_replace("-", "", $tomorrow));
+
+//--------------------------------SORT TASKS INTO CORRESPIONDING ARRAYS
     $over_tasks = [];
     $noday_tasks = [];
     $today_tasks = [];
@@ -14,7 +19,7 @@ function printTasks()
     $later_tasks = [];
 
     foreach ($tasks as $i => $task) {
-        //counting
+        
         if ($task['due_date'] !== null) {
             
             $due_num = intval(str_replace("-", "", $task['due_date']));
@@ -33,7 +38,7 @@ function printTasks()
         }
     }
 
-    // OVERDUE
+// ------------------------------------OVERDUE SECTION
     if (count($over_tasks) != 0) : ?>
 
         <h2 class="overdue">Overdue!</h2>
@@ -44,7 +49,7 @@ function printTasks()
         } 
     endif;
 
-    // TODAY
+// ------------------------------------TODAY SECTION
     if (count($today_tasks) !== 0): ?>
 
         <h2>Today</h2> 
@@ -53,7 +58,7 @@ function printTasks()
         require '../resources/partials/_taskLine.php';
         }
 
-        // UNSCHEDULED
+    // SHOW UNSCHEDULED TASKS
         if (count($noday_tasks) != 0) {
             foreach ($noday_tasks as $i => $task) {
                 require '../resources/partials/_taskLine.php';
@@ -70,7 +75,7 @@ function printTasks()
             endif;
     endif;
 
-    // TOMORROW
+// ----------------------------------TOMORROW SECTION
     if (count($tmrws_tasks) !== 0): ?>
                 
         <h2>Tomorrow</h2>
@@ -79,7 +84,7 @@ function printTasks()
             require '../resources/partials/_taskLine.php';
         }
 
-        //UNSCHEDULED - IF THEY ARE NOT ALREADY DISPLAYED
+    //SHOW UNSCHEDULED TASKS (IF THEY ARE NOT ALREADY DISPLAYED)
         if (count($today_tasks) == 0) {
           
             if (count($noday_tasks) != 0) {
@@ -93,7 +98,7 @@ function printTasks()
 
     endif; 
 
-    // LATER
+// -----------------------------------------LATER SECTION
     if(count($later_tasks) !== 0): ?>
 
         <h2>Later</h2>
@@ -102,7 +107,7 @@ function printTasks()
             require '../resources/partials/_taskLine.php';
         }
 
-        // UNSCHEDULED TASKS - IF THEY ARE NOT ALREADY DISPLAYED
+    // SHOW UNSCHEDULED TASKS - IF THEY ARE NOT ALREADY DISPLAYED
         if (count($today_tasks) == 0 && count($tmrws_tasks) == 0) {
           
             if (count($noday_tasks) != 0) {
@@ -117,7 +122,7 @@ function printTasks()
     endif;
 }
 
-// FUNCTION TO CREATE NEW USER
+// -------------------------------
 function create_user() 
 {    
     global $pdo;

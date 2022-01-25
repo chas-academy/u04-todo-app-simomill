@@ -32,3 +32,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: read.php');    
     }
 }
+
+
+//------------ HEADER PARTIAL
+ require_once '../resources/partials/_head.php'; ?>
+ 
+    <body>
+        <main>
+            <h1>Create new task</h1>
+
+            <form action="" method="POST" class="create">
+                
+                <input type="text" name="title" required placeholder="New task">
+                
+                <textarea name="description" placeholder="Description"></textarea>
+                
+                <input type="date" name="due_date" id="" 
+                min="<?php echo date('Y-m-d'); ?>">
+                
+                <button class="btn" type="submit">Create</button>
+            </form>
+
+            <a href="read.php">← Go back</a>
+        </main>
+    </body>
+</html>  

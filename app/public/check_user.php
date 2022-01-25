@@ -19,22 +19,22 @@ foreach($users as $i => $user) {
     }
 }
 
-if ($alreadyExists === 0) {
-    if (isset($_POST['signupPass'])) {
+// CHECK IF USERNAME IS AVAILABLE FOR SIGNUP
+if (isset($_POST['signupPass'])) {
+
+    if ($alreadyExists === 0) {
         create_user();
-        
         header('Location: index.php?green=User was successfully created.');
-    }
-} else {
-    if (isset($_POST['signupPass'])) {
+
+    } else {
         header('Location: index.php?msg=User already exists.');  
     }
 }
 
-//-----CHECK PASSWORD
+//-----CHECK CORRECT PASSWORD FOR LOGIN
 if (isset($_POST['loginPass'])) {
-    $password = password_hash($_POST['loginPass'], PASSWORD_DEFAULT);
 
+    $password = password_hash($_POST['loginPass'], PASSWORD_DEFAULT);
 
     if ($alreadyExists != 0) { 
         if (password_verify($_POST['loginPass'], $userMatch['password'])) {
@@ -47,5 +47,7 @@ if (isset($_POST['loginPass'])) {
     }
 }
 
+//--------SAVE USERNAME AND ID FOR CORRECT DISPLAY 
 session_start();
 $_SESSION['userID'] = $userMatch['id'];
+$_SESSION['username'] = $userMatch['username'];
