@@ -2,17 +2,18 @@
 /** @var $pdo \PDO */
 require_once "../resources/db.php";
 
+// ---------GET ID FROM THE SESSION SUPERGLOBAL
 session_start();
 $userID = $_SESSION['userID'];
 
-$title = $_POST['title'];
-$desc = $_POST['description'];
-
+// ----------------------------------CREATE TASK ON DATABASE
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = $_POST['title'];
+    $desc = $_POST['description'];
+
     if ($title) {
-        if (isset($_POST['due_date'])) {
-            $due_date = $_POST['due_date'];
-        } 
+        
+        $due_date = $_POST['due_date'];
 
         if ($due_date === "") {
             $due_date = null;
@@ -34,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-//------------ HEADER PARTIAL
+//------------ FRONTEND
  require_once '../resources/partials/_head.php'; ?>
  
     <body>

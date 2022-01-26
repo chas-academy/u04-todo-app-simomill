@@ -276,7 +276,7 @@ input[type="submit"] {
 .error {
   margin-top: 20px;
   padding: 10px;
-  color: #900;
+  color: #cf1e1e;
   border-radius: 5px;
 }
 
@@ -316,7 +316,7 @@ input[type="submit"] {
 }
 
 .overdue {
-  color: #900;
+  color: #cf1e1e;
 }
 
 @media only screen and (max-width: 700px) {

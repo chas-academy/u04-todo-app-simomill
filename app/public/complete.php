@@ -1,7 +1,7 @@
 <?php
-/** @var $pdo \PDO */
 require_once "../resources/db.php";
 
+// -------------------------SELECT TASK BASED ON ID
 $id = $_POST['id'] ?? null;
 
 if (!$id) {
@@ -13,6 +13,8 @@ $statement = $pdo->prepare('SELECT * FROM simondb.tasks WHERE id = :id');
 $statement->bindValue(':id', $id);
 $statement->execute();
 $task = $statement->fetch(PDO::FETCH_ASSOC);
+
+// -------------CHANGE "FINNISHED"-VALUE IN DATABASE WITH CHECKBOX
 
 $completed = $_POST['completed'] ?? null;
 

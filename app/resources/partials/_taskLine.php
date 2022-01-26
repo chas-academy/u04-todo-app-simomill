@@ -20,7 +20,11 @@
             echo 'class="finnished"';
         } ?>>
             <span class="iconify" data-icon="ci:calendar-calendar"></span>
-        <?php echo "\n" . $task['due_date'] ?>
+        <?php if ($task['due_date'] === null) {
+            echo "No deadline";
+        } else {
+            echo "\n" . $task['due_date'];
+        } ?>
     </span>
 
     <!-- ------------FUNCTIONALITY TO DELETE TASK--------------- -->

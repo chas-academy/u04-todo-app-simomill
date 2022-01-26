@@ -1,5 +1,4 @@
 <?php
-/** @var $pdo \PDO */
 require_once "../resources/db.php";
 
 // -------------------VARIABLES AND SELECTION OF SPECIFIC TASK
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: read.php');
 }
 
-// ------------------------HTML FOR THE UPDATE PAGE
+// ------------------------FRONTEND
 require_once '../resources/partials/_head.php'; 
 ?>
     <body class="update">

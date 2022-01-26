@@ -1,5 +1,4 @@
 <?php 
-/** @var $pdo \PDO */
 require_once "../resources/db.php";
 
 $id = $_POST['id'] ?? null;
@@ -14,3 +13,5 @@ $statement->bindValue(':id', $id);
 $statement-> execute();
 
 header('Location: read.php');
+
+

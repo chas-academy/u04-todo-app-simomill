@@ -47,6 +47,8 @@ function printTasks()
         foreach ($over_tasks as $i => $task) {
             require '../resources/partials/_taskLine.php';
         } 
+        
+        echo '<span class="divider"></span>';
     endif;
 
 // ------------------------------------TODAY SECTION
