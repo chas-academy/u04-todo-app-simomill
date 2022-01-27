@@ -56,6 +56,7 @@ h2 {
     width: 100%;
     background-color: $off-white;
     border: 1px solid $dark-grey;
+    border-radius: 4px;
     font-size: inherit;
     cursor: pointer;
     position: relative;
@@ -151,7 +152,7 @@ input, textarea, button, select {
     display: block; 
 }
 
-input.larger {
+input.checkbox {
     position: relative;
     cursor: pointer;
     width: 2%;
@@ -222,6 +223,7 @@ input, input::placeholder, textarea {
     background-color: $off-white;
     color: $black;
 }
+
 input[type="submit"] {
     background-color: rgb(43, 42, 42);
     border-color: rgb(85, 85, 85);

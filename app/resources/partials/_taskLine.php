@@ -52,7 +52,7 @@
         
         <input type="hidden" name="id" value="<?php echo $task['id'] ?>">
         
-        <input class="larger" type="checkbox" name="completed" 
+        <input class="checkbox" type="checkbox" name="completed" 
         onChange="this.form.submit()"
             <?php if ($task['finnished'] === 1) {
                 echo "checked";
